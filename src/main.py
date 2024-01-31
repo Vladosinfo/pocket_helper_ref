@@ -6,7 +6,7 @@ import src.classes.exceptions as ex
 import src.helpers.general_helpers as helpeer
 import src.helpers.serialization as serialize
 from src import clean_lib
-from src.messages_settings import (MESSAGES, EXIT_COMMANDS, WARNING_MESSAGES, COMMAND_HANDLER_DESCRIPTION,)
+from src.messages_settings import MESSAGES, EXIT_COMMANDS, WARNING_MESSAGES, COMMAND_HANDLER_DESCRIPTION
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit import prompt
 
@@ -259,7 +259,7 @@ def add_note(com):
 def show_all_notes(can):
     notes = message_notice(f"{MESSAGES['list_notes']}", GREEN)
     for val in notes_book.values():
-        notes += "\n" + message_notice(f"{val}", BOLD)
+        notes += "\n" + message_notice(f"{val.notes_data_output()}", BOLD)
     return notes
 
 

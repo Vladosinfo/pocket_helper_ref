@@ -1,4 +1,6 @@
-class RecordNotes():
+from src.abstract_classes.notes_data import NotesData
+
+class RecordNotes(NotesData):
     def __init__(self, title, description, tags=None):
         self._tags = tags.split(" ") if (tags is not None and tags != "") else None
         self._title = None
@@ -46,5 +48,9 @@ class RecordNotes():
                 continue
         self._tags = tags_from_text
 
-    def __str__(self):
+    def notes_data_output(self):
         return f" Title: {self.title}\n Tags:{self.tags}\n Description: {self.description}\n{'-'*50}"
+
+    def __str__(self):
+        return f" Title: {self.title}; Tags:{self.tags}; Description: {self.description}"
+
