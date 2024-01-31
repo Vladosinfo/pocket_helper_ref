@@ -5,9 +5,10 @@ from src.classes.birthday import Birthday
 from src.classes.exceptions import NotCorrectData
 from src.classes.address import Address
 from src.classes.email import Email
+from src.abstract_classes.contact_data import ContactData
 
 
-class Record():
+class Record(ContactData):
     def __init__(self, name, date=None, email=None, address=None):
         self.name = Name(name)  # Mandatory
         self.phones = []
@@ -62,8 +63,11 @@ class Record():
     def set_address(self, address):
         self.address.value = address
 
-    def __str__(self):
+    def contact_data_output(self):
         str_dat = f"; birthday: {self.date.value}" if self.date.value is not None else ""
         str_email = f"; email: {self.email.value}" if self.email is not None and self.email.value is not None else ""
         str_address = f"; address: {self.address.value}" if self.address.value is not None else ""
         return f"Name: {self.name.value.title()}; phones: {'; '.join(p.value for p in self.phones)}{str_dat}{str_email}{str_address}"
+
+    def __str__(self):
+        return self.contact_data_output()
